@@ -65,4 +65,7 @@ dkms.conf
 # Local History for Visual Studio Code
 .history/
 
+# Course specific
 students.txt
+*.zip
+out.txt
