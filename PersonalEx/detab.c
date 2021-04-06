@@ -24,6 +24,7 @@ int GetLine()
         if (current == '\n')
             column_index = 0;
         // If tab detected - go to next column determined by the tab stop length
+        // HI ROMAN
         else
         {
             // If it's not a new line - update the column index regarding current line
