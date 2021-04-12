@@ -18,11 +18,11 @@ int main()
         if ((scanf(" %lf %lf %lf", &a, &b, &c) == 3) && (a > EPSILON || a < -EPSILON))
         {
             // if no solutions over R (root of a negative dscrm), print no roots
-            if ((discriminant = b * b - 4 * a * c) < -EPSILON)
+            if ((discriminant = b * b - 4 * a * c) <= -EPSILON)
                 printf("There are no roots\n");
 
             // if discriminant is effectively 0, print one solution
-            else if (discriminant >= -EPSILON && discriminant <= EPSILON)
+            else if (discriminant > -EPSILON && discriminant < EPSILON)
             {
                 rootone = (0 - b) / (2 * a);
                 printf("The root is %.2lf\n", rootone);
