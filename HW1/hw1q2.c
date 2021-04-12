@@ -19,8 +19,8 @@ int main()
 
         printf("Enter the char sequence:\n");
 
-        // continue reading until the required $ terminator or the standard null terminator is encountered
-        while (((curchar = getchar()) != '$') && (curchar != '\0'))
+        // continue reading until the required $ terminator or an EOF
+        while (((curchar = getchar()) != '$') && (curchar != EOF))
             if ((curchar == schar) || (curchar == scharupper))
                 count++;
 
