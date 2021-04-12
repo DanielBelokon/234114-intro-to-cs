@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define CHARMODULO 32
+#define CHARMODULO ('a' - 'A')
 
 int main()
 {
@@ -12,19 +12,18 @@ int main()
     printf("Enter letter to count:\n");
 
     // set the search character and continue if alphabetical
-    if (('A' <= (schar = getchar())) && (schar <= 'z'))
+    if (('A' <= (schar = getchar())) && schar <= 'Z' || schar >= 'a' && schar <= 'z')
     {
         schar = (schar - 'A') % CHARMODULO + 'a'; // Convert to lowercase
-        scharupper = schar + 'A' - 'a';           // set uppercase
+        scharupper = schar - CHARMODULO;          // set uppercase
 
         printf("Enter the char sequence:\n");
 
         // continue reading until the required $ terminator or the standard null terminator is encountered
         while (((curchar = getchar()) != '$') && (curchar != '\0'))
-        {
             if ((curchar == schar) || (curchar == scharupper))
                 count++;
-        }
+
         printf("The letter appeared %d times\n", count);
     }
 
