@@ -1,0 +1,2 @@
+Enter the coefficients of a polynomial:
+The root is -1.00

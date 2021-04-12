@@ -1,0 +1,3 @@
+Enter letter to count:
+Enter the char sequence:
+The letter appeared 2 times
