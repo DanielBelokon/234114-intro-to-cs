@@ -12,7 +12,7 @@ int main()
     printf("Enter letter to count:\n");
 
     // set the search character and continue if alphabetical
-    if (('A' <= (schar = getchar())) && schar <= 'Z' || schar >= 'a' && schar <= 'z')
+    if ((('A' <= (schar = getchar())) && schar <= 'Z') || ('a' <= schar && schar <= 'z'))
     {
         schar = (schar - 'A') % CHARMODULO + 'a'; // Convert to lowercase
         scharupper = schar - CHARMODULO;          // set uppercase
