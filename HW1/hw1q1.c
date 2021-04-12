@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define EPSILON 0.000001
+#define EPSILON 0.000001 // the threashold for considering a number as equel to 0 (when distance from 0 smaller than the value)
 
 int main()
 {
@@ -22,20 +22,21 @@ int main()
                 printf("There are no roots\n");
 
             // if discriminant is effectively 0, print one solution
-            else if (discriminant > -EPSILON && discriminant < EPSILON)
-                printf("The root %.2lf\n", -b / (2 * a));
-
+            else if (discriminant >= -EPSILON && discriminant <= EPSILON)
+            {
+                rootone = (0 - b) / (2 * a);
+                printf("The root is %.2lf\n", rootone);
+            }
             // if neither -> dscrm is positive, print both solutions
             else
             {
                 double dscrmroot = sqrt(discriminant);
                 rootone = (-b - dscrmroot) / (2 * a); // the smaller root goes into rootone
                 roottwo = (-b + dscrmroot) / (2 * a);
-                printf("The roots are %2lf %2lf\n", rootone, roottwo);
+                printf("The roots are %.2lf, %.2lf\n", rootone, roottwo);
             }
+            break;
         }
-
-        break;
     }
 
     return 0;
