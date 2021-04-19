@@ -1,0 +1,46 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: gcc.exe build active file",
+			"command": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
+			"args": [
+				"-g",
+				"-Wall",
+				"${file}",
+				"-o",
+				"${fileDirname}\\bin\\${fileBasenameNoExtension}.exe",
+				"-std=c99",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: \"C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe\"",
+			"dependsOn": [
+				"C: create build directory"
+			]
+		},
+		{
+			"label": "C: create build directory",
+			"type": "shell",
+			"linux": {
+				"command": "mkdir -p ./build/release"
+			},
+			"windows": {
+				"command": "cmd",
+				"args": [
+					"/C",
+					"if not exist ${fileDirname}\\bin mkdir ${fileDirname}\\bin"
+				]
+			}
+		},
+	]
+}
