@@ -37,6 +37,7 @@ int main()
             }
             break;
         }
+        fflush(stdin);
     }
 
     return 0;
