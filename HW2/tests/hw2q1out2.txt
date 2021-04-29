@@ -1,0 +1,15 @@
+a        97      9409        97         7
+b        98      9604         1         1
+c        99      9801         1         1
+s       115     13225        16         6
+A        65      4225       -50         0
+9        57      3249        -8        -8
+a        97      9409        40         0
+8        56      3136       -41        -1
+7        55      3025        -1        -1
+g       103     10609        48         8
+g       103     10609         0         0
+"        34      1156       -69        -9
+Number of digits received: 3
+Number of letters received: 8
+Number of spaces received: 0

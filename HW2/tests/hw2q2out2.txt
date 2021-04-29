@@ -1,0 +1,30 @@
+Please enter three integers:
+3 1 3
+Please enter your character set:
+letter a appeared 0 time in the given set of characters
+letter b appeared 0 time in the given set of characters
+letter c appeared 0 time in the given set of characters
+letter d appeared 0 time in the given set of characters
+letter e appeared 0 time in the given set of characters
+letter f appeared 0 time in the given set of characters
+letter g appeared 0 time in the given set of characters
+letter h appeared 0 time in the given set of characters
+letter i appeared 0 time in the given set of characters
+letter j appeared 0 time in the given set of characters
+letter k appeared 0 time in the given set of characters
+letter l appeared 0 time in the given set of characters
+letter m appeared 0 time in the given set of characters
+letter n appeared 0 time in the given set of characters
+letter o appeared 0 time in the given set of characters
+letter p appeared 0 time in the given set of characters
+letter q appeared 0 time in the given set of characters
+letter r appeared 0 time in the given set of characters
+letter s appeared 0 time in the given set of characters
+letter t appeared 0 time in the given set of characters
+letter u appeared 0 time in the given set of characters
+letter v appeared 0 time in the given set of characters
+letter w appeared 0 time in the given set of characters
+letter x appeared 0 time in the given set of characters
+letter y appeared 0 time in the given set of characters
+letter z appeared 0 time in the given set of characters
+number of other characters in the given set was: 0
