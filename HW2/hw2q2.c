@@ -5,13 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 /*=========================================================================
   Constants and definitions:
 ==========================================================================*/
-#undef min
-
 
 void printThreeDigitsOpenMessage();
 void printResults(int avg, int rootOfMinNum, int avgPowTwoRootOfMinNum);
