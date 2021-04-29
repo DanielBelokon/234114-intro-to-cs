@@ -39,7 +39,7 @@ int main()
     int prev = 0;                            // previous ch
     int chTypeCntArr[CHAR_TYPES_AMNT] = {0}; // char type counter array by index
 
-    //
+    // iterate over the input stream and print ascii info while valid
     while (scanf("%c", &ch) == 1 && ch != ';')
     {
         int difference = ch - prev;
