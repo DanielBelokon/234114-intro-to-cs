@@ -15,7 +15,7 @@
 #define ALPHA_INDEX 1
 #define NMRCAL_INDEX 2
 
-#define CHAR_TYPES_AMNT 3
+#define CHAR_TYPES_AMNT 3 // The amount of different char 'types' (array size)
 
 void printGivenParamsToTheOutput(
     char ch, int asciiCode, int asciiCodePowTwo,
@@ -60,6 +60,9 @@ int main()
 /*
     Update the indexed counters of the passed array by using the int variable
     Counter indexes are derived from TYPE_INDEX preproccesor definitions
+
+    ch - the character to test
+    chTypeCntArr - the array to increment with the character type of ch
 */
 void determinCharType(char ch, int chTypeCntArr[CHAR_TYPES_AMNT])
 {
