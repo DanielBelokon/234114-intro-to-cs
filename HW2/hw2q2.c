@@ -8,6 +8,8 @@
 /*=========================================================================
   Constants and definitions:
 ==========================================================================*/
+#define ALPHABET_LEN ('z' - 'a' + 1)
+#define MAX_POW 1000000000
 
 void printThreeDigitsOpenMessage();
 void printResults(int avg, int rootOfMinNum, int avgPowTwoRootOfMinNum);
@@ -18,7 +20,7 @@ void printNumberOfOtherCharsAppeared(int numberOfOtherCharsAppeared);
 int average(int, int, int);
 int min(double, double);
 int absolute(double);
-double root(double);
+int root(int);
 double power(double base, int power);
 int characterAnalysis();
 
@@ -27,7 +29,19 @@ int characterAnalysis();
  -------------------------------------------------------------------------*/
 int main()
 {
+    printThreeDigitsOpenMessage();
+    int a, b, c;
+    int numminabs, numaverage, numroot;
 
+    if (scanf(" %d%d%d", &a, &b, &c) != 3)
+        return -1;
+
+    numminabs = absolute(min(min(a, b), c));
+    numaverage = average(a, b, c);
+    numroot = root(numminabs);
+
+    printResults(numaverage, numroot, power(numaverage, numminabs));
+    characterAnalysis();
     return 0;
 }
 
@@ -40,7 +54,7 @@ int average(int a, int b, int c)
 
 int min(double a, double b)
 {
-    if (a >= b)
+    if (a <= b)
         return a;
     else
         return b;
@@ -54,13 +68,16 @@ int absolute(double num)
         return -num;
 }
 
-double root(double num)
+int root(int num)
 {
-    for (int i = 0; i < num; i++)
+    for (int i = 1; i <= num; i++)
     {
-        /* code */
+        if (num / i == i)
+            return i;
+        else if (num / i < i)
+            break;
     }
-    
+    return -1;
 }
 
 double power(double base, int power)
@@ -70,9 +87,15 @@ double power(double base, int power)
 
     if (power == 0)
         return 1;
-        
-    while(power-- > 0)
+
+    if (base == 0)
+        return base;
+
+    while (--power > 1)
     {
+        if (base > MAX_POW / base)
+            return -1;
+
         base *= base;
     }
 
@@ -81,6 +104,26 @@ double power(double base, int power)
 
 int characterAnalysis()
 {
+    printCharactersOpenMessage();
+    char ch = 0;
+    char alphacntarr[ALPHABET_LEN] = {0};
+
+    int othercharcnt = 0;
+
+    while (scanf("%c", &ch) == 1 && ch != EOF)
+    {
+        if (ch >= 'a' && ch <= 'z')
+            alphacntarr[ch - 'a']++;
+        else
+            // Count all characters except newline and carriage return
+            othercharcnt += ch != '\n' && ch != '\r';
+    }
+
+    for (int i = 0; i < ALPHABET_LEN; i++)
+    {
+        printDataPerGivenCharAsInput(i + 'a', alphacntarr[i]);
+    }
+    printNumberOfOtherCharsAppeared(othercharcnt);
     return 0;
 }
 
