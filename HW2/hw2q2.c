@@ -18,10 +18,10 @@ void printDataPerGivenCharAsInput(char ch, int numberOfTimesAppeared);
 void printNumberOfOtherCharsAppeared(int numberOfOtherCharsAppeared);
 
 int average(int, int, int);
-int min(double, double);
-int absolute(double);
+int min(int, int);
+int absolute(int);
 int root(int);
-double power(double base, int power);
+int power(int base, int power);
 int characterAnalysis();
 
 /*-------------------------------------------------------------------------
@@ -52,7 +52,7 @@ int average(int a, int b, int c)
     return (a + b + c) / 3; // the return type is an int so it trucates it
 }
 
-int min(double a, double b)
+int min(int a, int b)
 {
     if (a <= b)
         return a;
@@ -60,7 +60,7 @@ int min(double a, double b)
         return b;
 }
 
-int absolute(double num)
+int absolute(int num)
 {
     if (num >= 0)
         return num;
@@ -80,7 +80,7 @@ int root(int num)
     return -1;
 }
 
-double power(double base, int power)
+int power(int base, int power)
 {
     if (base < 0 || power < 0)
         return -1;
