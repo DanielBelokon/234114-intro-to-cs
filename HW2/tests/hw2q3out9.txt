@@ -1,0 +1,3 @@
+Please enter the size of your soduko:
+Please enter your solution:
+Valid solution!
