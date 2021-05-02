@@ -20,7 +20,7 @@ int getInput(int sudoku[MAX_SIZE][MAX_SIZE], int size);
 int isRowValid(int row[MAX_SIZE], int size);
 int isColValid(int sudoku[MAX_SIZE][MAX_SIZE], int col, int size);
 int isInnerSquareValid(int sudoku[MAX_SIZE][MAX_SIZE],
-                       int index, int size, int smallN);
+                       int index, int size, int smalln);
 
 void printOpenMessageForSudokuSize();
 void printOpenMessageForSudokuSolution();
@@ -33,25 +33,24 @@ void printBadSolution();
 int main()
 {
     int sudokuarr[MAX_SIZE][MAX_SIZE] = {{0}};
-    int n, smallN = 0; // the sudoku size and it's root ("smaller squares")
+    int n, smalln = 0; // the sudoku size and it's root ("smaller squares")
 
     printOpenMessageForSudokuSize();
 
     // check if input is invalid (no whole root/non-positive n)
-    while (scanf(" %d", &n) != 1 || n <= 0 || (smallN = root(n)) < 0)
+    while (scanf(" %d", &n) != 1 || n <= 0 || (smalln = root(n)) < 0)
         ;
 
+    // get the input (we assume it's valid per the doc)
     printOpenMessageForSudokuSolution();
-
-    if (getInput(sudokuarr, n))
-        return 1;
+    getInput(sudokuarr, n);
 
     // Check if the solution is valid
     for (int i = 0; i < n; i++)
     {
         if (!isRowValid(sudokuarr[i], n) ||
             !isColValid(sudokuarr, i, n) ||
-            !isInnerSquareValid(sudokuarr, i, n, smallN))
+            !isInnerSquareValid(sudokuarr, i, n, smalln))
         {
             printBadSolution();
             return 0;
@@ -63,6 +62,8 @@ int main()
     return 0;
 }
 
+// Store input in the given array, use only actualsize*actualsize elements
+// Returns 0 on success, -1 on invalid input
 int getInput(int sudoku[MAX_SIZE][MAX_SIZE], int actualSize)
 {
     for (int row = 0; row < actualSize; row++)
@@ -90,7 +91,7 @@ int root(int num)
 
 int isRowValid(int row[MAX_SIZE], int actualSize)
 {
-    int nums[10] = {0};
+    int nums[MAX_SIZE + 1] = {0};
 
     // Iterate and check for duplicates by, save occurances in the num array
     for (int i = 0; i < actualSize; i++)
@@ -109,7 +110,7 @@ int isRowValid(int row[MAX_SIZE], int actualSize)
 
 int isColValid(int sudoku[MAX_SIZE][MAX_SIZE], int col, int actualSize)
 {
-    int nums[10] = {0};
+    int nums[MAX_SIZE + 1] = {0};
 
     // Iterate and check for duplicates by, save occurances in the num array
     for (int i = 0; i < actualSize; i++)
@@ -127,15 +128,15 @@ int isColValid(int sudoku[MAX_SIZE][MAX_SIZE], int col, int actualSize)
 }
 
 int isInnerSquareValid(int sudoku[MAX_SIZE][MAX_SIZE],
-                       int index, int actualSize, int smallN)
+                       int index, int actualSize, int smalln)
 {
-    int nums[10] = {0};
-    int rowshift = (index / smallN) * smallN,
-        colshift = (index % smallN) * smallN;
+    int nums[MAX_SIZE + 1] = {0};
+    int rowshift = (index / smalln) * smalln,
+        colshift = (index % smalln) * smalln;
 
-    for (int row = 0; row < smallN; row++)
+    for (int row = 0; row < smalln; row++)
     {
-        for (int col = 0; col < smallN; col++)
+        for (int col = 0; col < smalln; col++)
         {
             int val = sudoku[row + rowshift][col + colshift];
 
