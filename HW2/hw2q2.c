@@ -72,7 +72,7 @@ int root(int num)
 {
     for (int i = 1; i <= num; i++)
     {
-        if (num / i == i)
+        if (num == i * i)
             return i;
         else if (num / i < i)
             break;
