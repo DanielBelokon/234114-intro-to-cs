@@ -59,13 +59,13 @@ int main()
     return 0;
 }
 
-// Store input in the given array, use only actualsize*actualsize elements
+// Store input in the given array, use only grid_size*grid_size elements
 // Returns 0 on success, -1 on invalid input
-int getGridInput(int sudoku_arr[MAX_SIZE][MAX_SIZE], int actualSize)
+int getGridInput(int sudoku_arr[MAX_SIZE][MAX_SIZE], int grid_size)
 {
-    for (int row = 0; row < actualSize; row++)
+    for (int row = 0; row < grid_size; row++)
     {
-        for (int col = 0; col < actualSize; col++)
+        for (int col = 0; col < grid_size; col++)
         {
             if (scanf(" %d", &(sudoku_arr[row][col])) != 1)
                 return -1;
