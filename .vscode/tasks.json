@@ -8,6 +8,8 @@
 			"args": [
 				"-g",
 				"-Wall",
+				"-Wextra",
+				"-Wvla",
 				"${file}",
 				"-o",
 				"${fileDirname}\\bin\\${fileBasenameNoExtension}.exe",
