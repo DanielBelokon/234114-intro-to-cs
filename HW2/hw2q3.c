@@ -17,10 +17,10 @@ int root(int);
 
 int getGridInput(int sudoku_arr[MAX_SIZE][MAX_SIZE], int grid_size);
 
-int isValidSolution(int sudoku_arr[MAX_SIZE][MAX_SIZE],
-                    int grid_size, int subgrid_size);
+int isSolved(int sudoku_arr[MAX_SIZE][MAX_SIZE],
+             int grid_size, int subgrid_size);
 
-// Functions used by isValidSolution
+// Functions used by isSolved
 int isRowValid(int row[], int grid_size);
 int isColValid(int sudoku_arr[][MAX_SIZE], int col, int grid_size);
 int isSubgridValid(int sudoku_arr[][MAX_SIZE], int index, int subgrid_size);
@@ -36,22 +36,29 @@ void printBadSolution();
 int main()
 {
     int sudoku_arr[MAX_SIZE][MAX_SIZE] = {{0}};
-    int grid_size, subgrid_size = 0;
+    int grid_size = 0, subgrid_size = 0;
 
     printOpenMessageForSudokuSize();
 
     // check if input is invalid (no whole root/non-positive grid_size)
-    while (scanf(" %d", &grid_size) != 1 ||
-           grid_size <= 0 ||
-           (subgrid_size = root(grid_size)) < 0)
-        ;
+    // while (scanf(" %d", &grid_size) != 1 ||
+    //        grid_size <= 0 ||
+    //        (subgrid_size = root(grid_size)) < 0)
+    //     ;
+
+    do
+    {
+        if (scanf(" %d", &grid_size) != 1)
+            return -1;
+        subgrid_size = root(grid_size);
+    } while (grid_size <= 0 || subgrid_size <= 0);
 
     // get the input (we assume it's valid per the doc)
     printOpenMessageForSudokuSolution();
     getGridInput(sudoku_arr, grid_size);
 
     // Check if the solution is valid
-    if (isValidSolution(sudoku_arr, grid_size, subgrid_size))
+    if (isSolved(sudoku_arr, grid_size, subgrid_size))
         printValidSolution();
     else
         printBadSolution();
@@ -86,7 +93,7 @@ int root(int num)
     return -1;
 }
 
-int isValidSolution(int sudoku_arr[][MAX_SIZE], int grid_size, int subgrid_size)
+int isSolved(int sudoku_arr[][MAX_SIZE], int grid_size, int subgrid_size)
 {
     for (int i = 0; i < grid_size; i++)
     {
