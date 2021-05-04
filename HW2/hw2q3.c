@@ -147,14 +147,14 @@ int isSubgridValid(int sudoku_arr[MAX_SIZE][MAX_SIZE],
                    int index, int subgrid_size)
 {
     int nums[MAX_SIZE + 1] = {0};
-    int rowshift = (index / subgrid_size) * subgrid_size,
-        colshift = (index % subgrid_size) * subgrid_size;
+    int row_shift = (index / subgrid_size) * subgrid_size,
+        col_shift = (index % subgrid_size) * subgrid_size;
 
     for (int row = 0; row < subgrid_size; row++)
     {
         for (int col = 0; col < subgrid_size; col++)
         {
-            int val = sudoku_arr[row + rowshift][col + colshift];
+            int val = sudoku_arr[row + row_shift][col + col_shift];
 
             if (!nums[val])
                 nums[val] = 1;
