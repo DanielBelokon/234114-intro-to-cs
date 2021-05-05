@@ -23,7 +23,7 @@ if [ -z ${hw} ]; then
 fi
 
 for i in $(seq 1 $range)
-	do ./bin/hw${hw}q${question}.exe < tests/hw${hw}q${question}in$i.txt | diff tests/hw${hw}q${question}out$i.txt - 
+	do ./bin/hw${hw}q${question}.exe < tests/hw${hw}q${question}in$i.txt | diff tests/hw${hw}q${question}out$i.txt - ; echo "Doing HW${hw}Q${question} - test $i"
 done
 
 
