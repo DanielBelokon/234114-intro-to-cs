@@ -40,12 +40,6 @@ int main()
 
     printOpenMessageForSudokuSize();
 
-    // check if input is invalid (no whole root/non-positive grid_size)
-    // while (scanf(" %d", &grid_size) != 1 ||
-    //        grid_size <= 0 ||
-    //        (subgrid_size = root(grid_size)) < 0)
-    //     ;
-
     do
     {
         if (scanf(" %d", &grid_size) != 1)
@@ -114,11 +108,15 @@ int isSolved(int sudoku_arr[][MAX_SIZE], int grid_size, int subgrid_size)
  *  col_iter - number of iterations over the columns
  *  row_iter - number of iterations over the rows
  */
-int isDuplicate(int sudoku_arr[][MAX_SIZE], int row_shift,
-                int col_shift, int row_iter, int col_iter)
+int isNotDuplicate(int sudoku_arr[][MAX_SIZE], int row_shift,
+                   int col_shift, int row_iter, int col_iter)
 {
     // Keep track of occurences
     int num_occured[MAX_SIZE + 1] = {0};
+
+    if (row_iter > MAX_SIZE && col_iter > MAX_SIZE &&
+        col_shift > MAX_SIZE && row_iter > MAX_SIZE)
+        return -1;
 
     for (int row = 0; row < row_iter; row++)
     {
@@ -126,7 +124,7 @@ int isDuplicate(int sudoku_arr[][MAX_SIZE], int row_shift,
         {
             int val = sudoku_arr[row + row_shift][col + col_shift];
 
-            // If number is new, set to occured. If occured, invalid soluton
+            // If number is new, set to occured. If occured, return duplicate
             if (num_occured[val])
                 return 0;
 
@@ -139,22 +137,22 @@ int isDuplicate(int sudoku_arr[][MAX_SIZE], int row_shift,
 
 int isRowValid(int sudoku_arr[][MAX_SIZE], int row, int grid_size)
 {
-    // isDuplicate is called with the following parameters:
+    // isNotDuplicate is called with the following parameters:
     // Shift row index (this chooses the correct row)
     // Don't shift the columns (we iterate over them),
     // Go over one row
     // Iterate over columns in that row grid_size times
-    return isDuplicate(sudoku_arr, row, 0, 1, grid_size);
+    return isNotDuplicate(sudoku_arr, row, 0, 1, grid_size);
 }
 
 int isColValid(int sudoku_arr[][MAX_SIZE], int col, int grid_size)
 {
-    // isDuplicate is called with the following parameters:
+    // isNotDuplicate is called with the following parameters:
     // Don't shift the rows (we iterate over them),
     // Shift column index (this chooses the correct row)
     // Iterate over rows in that column grid_size times
     // Go over one column
-    return isDuplicate(sudoku_arr, 0, col, grid_size, 1);
+    return isNotDuplicate(sudoku_arr, 0, col, grid_size, 1);
 }
 
 int isSubgridValid(int sudoku_arr[MAX_SIZE][MAX_SIZE],
@@ -165,11 +163,10 @@ int isSubgridValid(int sudoku_arr[MAX_SIZE][MAX_SIZE],
     int row_shift = (index / subgrid_size) * subgrid_size,
         col_shift = (index % subgrid_size) * subgrid_size;
 
-    return isDuplicate(sudoku_arr,
-                       row_shift,
-                       col_shift,
-                       subgrid_size,
-                       subgrid_size);
+    // shift to appropriate subgrid, iterate over all items in it
+    return isNotDuplicate(sudoku_arr,
+                          row_shift, col_shift,
+                          subgrid_size, subgrid_size);
 }
 
 void printOpenMessageForSudokuSize()
