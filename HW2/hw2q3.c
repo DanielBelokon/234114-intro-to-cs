@@ -21,7 +21,7 @@ int isSolved(int sudoku_arr[MAX_SIZE][MAX_SIZE],
              int grid_size, int subgrid_size);
 
 // Functions used by isSolved
-int isRowValid(int row[], int grid_size);
+int isRowValid(int sudoku_arr[][MAX_SIZE], int row, int grid_size);
 int isColValid(int sudoku_arr[][MAX_SIZE], int col, int grid_size);
 int isSubgridValid(int sudoku_arr[][MAX_SIZE], int index, int subgrid_size);
 
@@ -97,7 +97,7 @@ int isSolved(int sudoku_arr[][MAX_SIZE], int grid_size, int subgrid_size)
 {
     for (int i = 0; i < grid_size; i++)
     {
-        if (!isRowValid(sudoku_arr[i], grid_size) ||
+        if (!isRowValid(sudoku_arr, i, grid_size) ||
             !isColValid(sudoku_arr, i, grid_size) ||
             !isSubgridValid(sudoku_arr, i, subgrid_size))
         {
@@ -107,7 +107,7 @@ int isSolved(int sudoku_arr[][MAX_SIZE], int grid_size, int subgrid_size)
     return 1;
 }
 
-/*  General duplicate checker 
+/*  General duplicate checker (all the duplication checks are very similar)
  *  sudoku_arr - the sudoku grid to check
  *  row_shift - the initial position from which to iterate over rows
  *  col_shift - the initial position from which to iterate over columns
@@ -115,8 +115,9 @@ int isSolved(int sudoku_arr[][MAX_SIZE], int grid_size, int subgrid_size)
  *  row_iter - number of iterations over the rows
  */
 int isDuplicate(int sudoku_arr[][MAX_SIZE], int row_shift,
-                int col_shift, int col_iter, int row_iter)
+                int col_shift, int row_iter, int col_iter)
 {
+    // Keep track of occurences
     int num_occured[MAX_SIZE + 1] = {0};
 
     for (int row = 0; row < row_iter; row++)
@@ -136,65 +137,39 @@ int isDuplicate(int sudoku_arr[][MAX_SIZE], int row_shift,
     return 1;
 }
 
-int isRowValid(int row[MAX_SIZE], int grid_size)
+int isRowValid(int sudoku_arr[][MAX_SIZE], int row, int grid_size)
 {
-    int num_occured[MAX_SIZE + 1] = {0};
-
-    // Iterate and check for duplicates by, save occurances in the num array
-    for (int i = 0; i < grid_size; i++)
-    {
-        int val = row[i];
-
-        if (num_occured[val])
-            return 0;
-
-        num_occured[val] = 1;
-    }
-    // Row is valid
-    return 1;
+    // isDuplicate is called with the following parameters:
+    // Shift row index (this chooses the correct row)
+    // Don't shift the columns (we iterate over them),
+    // Go over one row
+    // Iterate over columns in that row grid_size times
+    return isDuplicate(sudoku_arr, row, 0, 1, grid_size);
 }
 
 int isColValid(int sudoku_arr[][MAX_SIZE], int col, int grid_size)
 {
-    int num_occured[MAX_SIZE + 1] = {0};
-
-    // Iterate and check for duplicates by, save occurances in the num array
-
-    for (int i = 0; i < grid_size; i++)
-    {
-        int val = sudoku_arr[i][col];
-
-        if (num_occured[val])
-            return 0;
-
-        num_occured[val] = 1;
-    }
-    // Col is valid
-    return 1;
+    // isDuplicate is called with the following parameters:
+    // Don't shift the rows (we iterate over them),
+    // Shift column index (this chooses the correct row)
+    // Iterate over rows in that column grid_size times
+    // Go over one column
+    return isDuplicate(sudoku_arr, 0, col, grid_size, 1);
 }
 
 int isSubgridValid(int sudoku_arr[MAX_SIZE][MAX_SIZE],
                    int index, int subgrid_size)
 {
-    int num_occured[MAX_SIZE + 1] = {0};
+    //int num_occured[MAX_SIZE + 1] = {0};
+
     int row_shift = (index / subgrid_size) * subgrid_size,
         col_shift = (index % subgrid_size) * subgrid_size;
 
-    for (int row = 0; row < subgrid_size; row++)
-    {
-        for (int col = 0; col < subgrid_size; col++)
-        {
-            int val = sudoku_arr[row + row_shift][col + col_shift];
-
-            // If number is new, set to occured. If occured, invalid soluton
-            if (num_occured[val])
-                return 0;
-
-            num_occured[val] = 1;
-        }
-    }
-
-    return 1;
+    return isDuplicate(sudoku_arr,
+                       row_shift,
+                       col_shift,
+                       subgrid_size,
+                       subgrid_size);
 }
 
 void printOpenMessageForSudokuSize()
