@@ -107,19 +107,48 @@ int isSolved(int sudoku_arr[][MAX_SIZE], int grid_size, int subgrid_size)
     return 1;
 }
 
+/*  General duplicate checker 
+ *  sudoku_arr - the sudoku grid to check
+ *  row_shift - the initial position from which to iterate over rows
+ *  col_shift - the initial position from which to iterate over columns
+ *  col_iter - number of iterations over the columns
+ *  row_iter - number of iterations over the rows
+ */
+int isDuplicate(int sudoku_arr[][MAX_SIZE], int row_shift,
+                int col_shift, int col_iter, int row_iter)
+{
+    int num_occured[MAX_SIZE + 1] = {0};
+
+    for (int row = 0; row < row_iter; row++)
+    {
+        for (int col = 0; col < col_iter; col++)
+        {
+            int val = sudoku_arr[row + row_shift][col + col_shift];
+
+            // If number is new, set to occured. If occured, invalid soluton
+            if (num_occured[val])
+                return 0;
+
+            num_occured[val] = 1;
+        }
+    }
+
+    return 1;
+}
+
 int isRowValid(int row[MAX_SIZE], int grid_size)
 {
-    int nums[MAX_SIZE + 1] = {0};
+    int num_occured[MAX_SIZE + 1] = {0};
 
     // Iterate and check for duplicates by, save occurances in the num array
     for (int i = 0; i < grid_size; i++)
     {
         int val = row[i];
 
-        if (!nums[val])
-            nums[val] = 1;
-        else
+        if (num_occured[val])
             return 0;
+
+        num_occured[val] = 1;
     }
     // Row is valid
     return 1;
@@ -127,17 +156,18 @@ int isRowValid(int row[MAX_SIZE], int grid_size)
 
 int isColValid(int sudoku_arr[][MAX_SIZE], int col, int grid_size)
 {
-    int nums[MAX_SIZE + 1] = {0};
+    int num_occured[MAX_SIZE + 1] = {0};
 
     // Iterate and check for duplicates by, save occurances in the num array
+
     for (int i = 0; i < grid_size; i++)
     {
         int val = sudoku_arr[i][col];
 
-        if (!nums[val])
-            nums[val] = 1;
-        else
+        if (num_occured[val])
             return 0;
+
+        num_occured[val] = 1;
     }
     // Col is valid
     return 1;
@@ -146,7 +176,7 @@ int isColValid(int sudoku_arr[][MAX_SIZE], int col, int grid_size)
 int isSubgridValid(int sudoku_arr[MAX_SIZE][MAX_SIZE],
                    int index, int subgrid_size)
 {
-    int nums[MAX_SIZE + 1] = {0};
+    int num_occured[MAX_SIZE + 1] = {0};
     int row_shift = (index / subgrid_size) * subgrid_size,
         col_shift = (index % subgrid_size) * subgrid_size;
 
@@ -156,10 +186,11 @@ int isSubgridValid(int sudoku_arr[MAX_SIZE][MAX_SIZE],
         {
             int val = sudoku_arr[row + row_shift][col + col_shift];
 
-            if (!nums[val])
-                nums[val] = 1;
-            else
+            // If number is new, set to occured. If occured, invalid soluton
+            if (num_occured[val])
                 return 0;
+
+            num_occured[val] = 1;
         }
     }
 
