@@ -22,7 +22,7 @@ void printGivenParamsToTheOutput(
     int difference, int unitDigitOfDiff
 );
 
-void determinCharType(char ch, int chTypeCntArr[CHAR_TYPES_AMNT]);
+void incCharTypeCnt(char ch, int chTypeCntArr[CHAR_TYPES_AMNT]);
 
 void printResults(int digitsCounter, int lettersCounter, int spacesCounter);
 
@@ -35,9 +35,9 @@ void printResults(int digitsCounter, int lettersCounter, int spacesCounter);
  -------------------------------------------------------------------------*/
 int main()
 {
-    unsigned char ch = 0;                    // current char read
-    int prev = 0;                            // previous ch
-    int chTypeCntArr[CHAR_TYPES_AMNT] = {0}; // char type counter array by index
+    unsigned char ch = 0;                       // current char read
+    int prev = 0;                               // previous ch
+    int ch_type_cnt_arr[CHAR_TYPES_AMNT] = {0}; // char type counter
 
     // iterate over the input stream and print ascii info while valid
     while (scanf("%c", &ch) == 1 && ch != ';')
@@ -46,13 +46,13 @@ int main()
         printGivenParamsToTheOutput(ch, (int)ch, ch * (int)ch,
                                     difference, difference % 10);
 
-        determinCharType(ch, chTypeCntArr);
+        incCharTypeCnt(ch, ch_type_cnt_arr);
         prev = ch;
     }
 
-    printResults(chTypeCntArr[NMRCAL_INDEX],
-                 chTypeCntArr[ALPHA_INDEX],
-                 chTypeCntArr[SPACE_INDEX]);
+    printResults(ch_type_cnt_arr[NMRCAL_INDEX],
+                 ch_type_cnt_arr[ALPHA_INDEX],
+                 ch_type_cnt_arr[SPACE_INDEX]);
 
     return 0;
 }
@@ -62,14 +62,14 @@ int main()
     Counter indexes are derived from TYPE_INDEX preproccesor definitions
 
     ch - the character to test
-    chTypeCntArr - the array to increment with the character type of ch
+    ch_type_cnt_arr - the array to increment with the character type of ch
 */
-void determinCharType(char ch, int chTypeCntArr[CHAR_TYPES_AMNT])
+void incCharTypeCnt(char ch, int ch_type_cnt_arr[CHAR_TYPES_AMNT])
 {
-    chTypeCntArr[SPACE_INDEX] += ch == ' ';
-    chTypeCntArr[ALPHA_INDEX] += ((ch <= 'Z' && ch >= 'A') ||
-                                  (ch <= 'z' && ch >= 'a'));
-    chTypeCntArr[NMRCAL_INDEX] += (ch <= '9' && ch >= '0');
+    ch_type_cnt_arr[SPACE_INDEX] += ch == ' ';
+    ch_type_cnt_arr[ALPHA_INDEX] += ((ch <= 'Z' && ch >= 'A') ||
+                                     (ch <= 'z' && ch >= 'a'));
+    ch_type_cnt_arr[NMRCAL_INDEX] += (ch <= '9' && ch >= '0');
 }
 
 void printGivenParamsToTheOutput(
