@@ -49,12 +49,12 @@ int main()
 
 int average(int a, int b, int c)
 {
-    return (a + b + c) / 3; // the return type is an int so it trucates it
+    return (a + b + c) / 3.0; // the return type is an int so it trucates it
 }
 
 int min(int a, int b)
 {
-    if (a <= b)
+    if (a < b)
         return a;
     else
         return b;
@@ -62,10 +62,10 @@ int min(int a, int b)
 
 int absolute(int num)
 {
-    if (num >= 0)
-        return num;
-    else
+    if (num < 0)
         return -num;
+    else
+        return num;
 }
 
 int root(int num)
@@ -82,48 +82,46 @@ int root(int num)
 
 int power(int base, int power)
 {
+    int res = 1;
     if (base < 0 || power < 0)
         return -1;
-
-    if (power == 0)
-        return 1;
 
     if (base == 0)
         return base;
 
-    while (--power > 1)
+    while (power-- > 0)
     {
         if (base > MAX_POW / base)
             return -1;
 
-        base *= base;
+        res *= base;
     }
 
-    return base;
+    return res;
 }
 
 int characterAnalysis()
 {
     printCharactersOpenMessage();
     char ch = 0;
-    char alphacntarr[ALPHABET_LEN] = {0};
+    char alpha_cnt_arr[ALPHABET_LEN] = {0};
 
-    int othercharcnt = 0;
+    int other_char_cnt = 0;
 
-    while (scanf("%c", &ch) == 1 && ch != EOF)
+    while (scanf("%c", &ch) != EOF)
     {
         if (ch >= 'a' && ch <= 'z')
-            alphacntarr[ch - 'a']++;
+            alpha_cnt_arr[ch - 'a']++;
         else
             // Count all characters except newline and carriage return
-            othercharcnt += ch != '\n' && ch != '\r';
+            other_char_cnt += (ch != '\n' && ch != '\r');
     }
 
     for (int i = 0; i < ALPHABET_LEN; i++)
     {
-        printDataPerGivenCharAsInput(i + 'a', alphacntarr[i]);
+        printDataPerGivenCharAsInput(i + 'a', alpha_cnt_arr[i]);
     }
-    printNumberOfOtherCharsAppeared(othercharcnt);
+    printNumberOfOtherCharsAppeared(other_char_cnt);
     return 0;
 }
 
