@@ -12,7 +12,6 @@
 
 #define MAX_SIZE 25
 
-int validateInput(int);
 int root(int);
 
 int getGridInput(int sudoku_arr[MAX_SIZE][MAX_SIZE], int grid_size);
