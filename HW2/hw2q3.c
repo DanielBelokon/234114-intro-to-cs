@@ -89,6 +89,9 @@ int getGridInput(int sudoku_arr[MAX_SIZE][MAX_SIZE], int grid_size)
 
 int root(int num)
 {
+    if (num == 0)
+        return num;
+
     for (int i = 1; i <= num; i++)
     {
         if (num == i * i)

@@ -70,6 +70,9 @@ int absolute(int num)
 
 int root(int num)
 {
+    if (num == 0)
+        return num;
+
     for (int i = 1; i <= num; i++)
     {
         if (num == i * i)
