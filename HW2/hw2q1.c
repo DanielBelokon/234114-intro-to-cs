@@ -17,12 +17,12 @@
 
 #define CHAR_TYPES_AMNT 3 // The amount of different char 'types' (array size)
 
+void incCharTypeCnt(char ch, int ch_type_cnt_arr[CHAR_TYPES_AMNT]);
+
 void printGivenParamsToTheOutput(
     char ch, int asciiCode, int asciiCodePowTwo,
     int difference, int unitDigitOfDiff
 );
-
-void incCharTypeCnt(char ch, int chTypeCntArr[CHAR_TYPES_AMNT]);
 
 void printResults(int digitsCounter, int lettersCounter, int spacesCounter);
 
@@ -59,10 +59,10 @@ int main()
 
 /*
     Update the indexed counters of the passed array by using the int variable
-    Counter indexes are derived from TYPE_INDEX preproccesor definitions
+    Counter indexes are derived from {TYPE}_INDEX definitions
 
-    ch - the character to test
-    ch_type_cnt_arr - the array to increment with the character type of ch
+    ch: the character to test
+    ch_type_cnt_arr: the array to increment with the character type of ch
 */
 void incCharTypeCnt(char ch, int ch_type_cnt_arr[CHAR_TYPES_AMNT])
 {
