@@ -10,6 +10,7 @@
 				"-Wall",
 				"-Wextra",
 				"-Wvla",
+				"-pedantic",
 				"${file}",
 				"-o",
 				"${fileDirname}\\bin\\${fileBasenameNoExtension}.exe",
