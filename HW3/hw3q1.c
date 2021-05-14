@@ -7,6 +7,7 @@
     Constants and definitions:
 -------------------------------------------------------------------------*/
 #define N 11
+#define PLAYERS 2
 
 /*-------------------------------------------------------------------------
     Function declaration
@@ -16,6 +17,7 @@ int get_move(int player, int *row, int *col);
 int revert_moves(/* amount of moves, history? */);
 int update_board(/* status */);
 int conclude_game(/* status */);
+int check_for_win(int board_arr[N][N], int *p_winner);
 
 int get_size();
 
@@ -33,15 +35,24 @@ void print_tie();
 
 int main()
 {
-    int cur_player = 1, board_size = 0;
-    int winner;
+    int board_arr[N][N] = {{0}};
+
+    int board_size, move = 1;
+    int winner, endgame = 0;
     board_size = get_size();
 
+    while (!endgame)
+    {
+        print_board(board_arr, board_size);
+        update_board(board_arr, move);
+        endgame = check_for_win(board_arr, &winner);
+    }
+    conclude_game(winner);
     return 0;
 }
 
 /*-------------------------------------------------------------------------
-    Course Provided Functions (why camel_case :( )
+    Course Provided Functions
 -------------------------------------------------------------------------*/
 //print welcome message
 //1 lines

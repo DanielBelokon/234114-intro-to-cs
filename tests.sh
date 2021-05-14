@@ -11,20 +11,26 @@ do
 done
 
 if [ -z ${range} ]; then
-	range=4;
+	echo Test amount:
+	read range
 fi
 
 if [ -z ${question} ]; then
-	question=1;
+	echo Question number:
+	read question
 fi
 
 if [ -z ${hw} ]; then
-	hw=1;
+	echo HW number:
+	read hw
 fi
 
 for i in $(seq 1 $range)
-	do ./bin/hw${hw}q${question}.exe < tests/hw${hw}q${question}in$i.txt | diff tests/hw${hw}q${question}out$i.txt - ; echo "Doing HW${hw}Q${question} - test $i"
+	do HW${hw}/bin/hw${hw}q${question}.exe < HW${hw}/tests/hw${hw}q${question}in$i.txt | diff HW${hw}/tests/hw${hw}q${question}out$i.txt - ; echo "Doing HW${hw}Q${question} - test $i"
 done
+
+echo done
+$SHELL
 
 
 
