@@ -39,8 +39,18 @@ void print_tie();
 
 /*-------------------------------------------------------------------------
     Implementation
+    Avoidance tic tac toe - play until someone loses by placing n moves in a 
+    straight or diagnal line
+
+    X := odd numbers in the board arr
+    O := even numbers in the board arr
+
+    The arr stores when the move was made rather than who made it, 
+    thus we are able to revert when needed and easily deduce who it was made
+    by (first player always on odd moves, second always on even moves)
 -------------------------------------------------------------------------*/
 
+// Initialize the variables, start the game
 // 7 lines
 int main()
 {
@@ -55,6 +65,7 @@ int main()
     return 0;
 }
 
+// get the board size from the the players
 // 5 lines
 int get_size()
 {
@@ -66,17 +77,20 @@ int get_size()
     return 0;
 }
 
+// actual game logic, initialize variables, start the game loop and make moves
 // 12 lines
 int play_game(int board_arr[][N], int board_size)
 {
     int coords[2] = {0}, winner = 0;
     int move = 1, player = 0;
+
+    // play as long as board isn't full (save one to print the final board)
     while (move - 1 <= board_size * board_size)
     {
         player = 2 - (move % 2);
         print_board(board_arr, board_size);
 
-        // when enough moves for a loss
+        // when enough moves for a loss, check
         if (move >= 2 * board_size &&
             check_board(board_arr, &winner, board_size, move))
             return winner;
@@ -88,11 +102,11 @@ int play_game(int board_arr[][N], int board_size)
     return 0;
 }
 
-// 15 lines (REFACTOR!!!)
+// get the next move from the cur player
+// 13 lines
 void get_move(int board_arr[N][N], int board_size, int player, int coords[2])
 {
-
-    do
+    while (1)
     {
         if (scanf(" %d", &coords[X]) == 1)
         {
@@ -110,12 +124,12 @@ void get_move(int board_arr[N][N], int board_size, int player, int coords[2])
         }
 
         print_error();
-
-    } while (1);
+    }
 
     return;
 }
 
+// apply the current move to the board and update the move counter accordingly
 // 6 lines
 int make_move(int board_arr[][N], int board_size, int *p_move, int coords[])
 {
@@ -129,6 +143,7 @@ int make_move(int board_arr[][N], int board_size, int *p_move, int coords[])
     return 0;
 }
 
+// revert the board by 'undo_by' moves and reverse move counter
 // 6 lines
 void undo(int board_arr[N][N], int board_size, int *p_move, int undo_by)
 {
@@ -145,10 +160,11 @@ void undo(int board_arr[N][N], int board_size, int *p_move, int undo_by)
     return;
 }
 
+// check the board for full X or O in a diag/vert/horiz line or no loser
 // 8 lines
 int check_board(int board_arr[N][N], int *p_winner, int board_size, int move)
 {
-    // last move was played == no winner
+    // no more space == no winner
     if ((move - 1) == board_size * board_size)
     {
         *p_winner = 0;
@@ -158,6 +174,7 @@ int check_board(int board_arr[N][N], int *p_winner, int board_size, int move)
     if (is_line_loss(board_arr, board_size) ||
         is_diag_loss(board_arr, board_size))
     {
+        // loss happened on prev move, so curr player is the winner
         *p_winner = 2 - (move % 2);
         return 1;
     }
@@ -165,6 +182,8 @@ int check_board(int board_arr[N][N], int *p_winner, int board_size, int move)
     return 0;
 }
 
+// Check the rows & columns for X or O in a row (odd vs even)
+// 8 lines
 int is_line_loss(int board_arr[N][N], int board_size)
 {
     int col_arr[N];
@@ -183,6 +202,7 @@ int is_line_loss(int board_arr[N][N], int board_size)
     return loss_cnt;
 }
 
+// Check both diagnals for full X or O (odd vs even)
 int is_diag_loss(int board_arr[N][N], int board_size)
 {
     int diag_arr_ltr[N], diag_arr_rtl[N];
@@ -197,6 +217,8 @@ int is_diag_loss(int board_arr[N][N], int board_size)
            is_loss(diag_arr_rtl, board_size);
 }
 
+// Check a given arr of numbers if all entries are odd or all are even (X - O)
+// 6 lines
 int is_loss(int arr[], int size)
 {
     int odd_count = 0;
@@ -213,6 +235,8 @@ int is_loss(int arr[], int size)
     return (odd_count == size || odd_count == 0);
 }
 
+// print conclusion based on winner/tie
+// 5 lines
 void conclude_game(int winner)
 {
     if (winner == 0)
