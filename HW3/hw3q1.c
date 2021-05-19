@@ -16,17 +16,18 @@
     Function declaration
 -------------------------------------------------------------------------*/
 
-void get_move(int player, int coords[2], int board_size, int board_arr[N][N]);
-int make_move(int board_arr[N][N], int *p_move, int coords[2], int size);
-void conclude_game(int winner);
 int check_board(int board_arr[N][N], int *p_winner, int board_size, int move);
-
-int check_for_straight(int board_arr[N][N], int board_size);
-int check_cols(int board_arr[N][N], int board_size);
-int check_for_diag(int board_arr[N][N], int board_size);
-void revert_moves(int board_arr[N][N], int revert_by, int *p_move, int size);
-
+int make_move(int board_arr[N][N], int board_size, int *p_move, int coords[2]);
+int play_game(int board_arr[][N], int board_size);
 int get_size();
+
+void get_move(int board_arr[N][N], int board_size, int player, int coords[2]);
+void conclude_game(int winner);
+
+int is_line_loss(int board_arr[N][N], int board_size);
+int is_diag_loss(int board_arr[N][N], int board_size);
+int is_loss(int arr[], int size);
+void undo(int board_arr[N][N], int board_size, int *p_move, int undo_by);
 
 void print_welcome();
 void print_enter_board_size();
@@ -40,22 +41,16 @@ void print_tie();
     Implementation
 -------------------------------------------------------------------------*/
 
+// 7 lines
 int main()
 {
     int board_arr[N][N] = {{0}}, board_size;
-    int move = 1, winner = 0;
-    int coords[2] = {0};
-    
+    int winner;
+
     print_welcome();
+
     board_size = get_size();
-    while (move <= board_size * board_size)
-    {
-        print_board(board_arr, board_size);
-        if (move >= 2 * board_size && check_board(board_arr, &winner, board_size, move))
-            break;
-        get_move(2 - (move % 2), coords, board_size, board_arr);
-        make_move(board_arr, &move, coords, board_size);
-    }
+    winner = play_game(board_arr, board_size);
     conclude_game(winner);
     return 0;
 }
@@ -71,10 +66,32 @@ int get_size()
     return 0;
 }
 
-// 15 lines (REFACTOR!!!)
-void get_move(int player, int coords[2], int board_size, int board_arr[N][N])
+// 12 lines
+int play_game(int board_arr[][N], int board_size)
 {
-    print_player_turn(player);
+    int coords[2] = {0}, winner = 0;
+    int move = 1, player = 0;
+    while (move - 1 <= board_size * board_size)
+    {
+        player = 2 - (move % 2);
+        print_board(board_arr, board_size);
+
+        // when enough moves for a loss
+        if (move >= 2 * board_size &&
+            check_board(board_arr, &winner, board_size, move))
+            return winner;
+            
+        print_player_turn(player);
+        get_move(board_arr, board_size, player, coords);
+        make_move(board_arr, board_size, &move, coords);
+    }
+    return 0;
+}
+
+// 15 lines (REFACTOR!!!)
+void get_move(int board_arr[N][N], int board_size, int player, int coords[2])
+{
+
     do
     {
         if (scanf(" %d", &coords[X]) == 1)
@@ -100,10 +117,10 @@ void get_move(int player, int coords[2], int board_size, int board_arr[N][N])
 }
 
 // 6 lines
-int make_move(int board_arr[N][N], int *p_move, int coords[2], int size)
+int make_move(int board_arr[][N], int board_size, int *p_move, int coords[])
 {
     if (coords[X] < 0)
-        revert_moves(board_arr, coords[X], p_move, size);
+        undo(board_arr, board_size, p_move, coords[X]);
     else
     {
         board_arr[coords[X] - 1][coords[Y] - 1] = *p_move;
@@ -113,17 +130,17 @@ int make_move(int board_arr[N][N], int *p_move, int coords[2], int size)
 }
 
 // 6 lines
-void revert_moves(int board_arr[N][N], int revert_by, int *p_move, int size)
+void undo(int board_arr[N][N], int board_size, int *p_move, int undo_by)
 {
-    for (int row = 0; row < size; row++)
+    for (int row = 0; row < board_size; row++)
     {
-        for (int col = 0; col < size; col++)
+        for (int col = 0; col < board_size; col++)
         {
-            if (board_arr[row][col] >= *p_move + revert_by)
+            if (board_arr[row][col] >= *p_move + undo_by)
                 board_arr[row][col] = 0;
         }
     }
-    *p_move += revert_by;
+    *p_move += undo_by;
 
     return;
 }
@@ -138,8 +155,8 @@ int check_board(int board_arr[N][N], int *p_winner, int board_size, int move)
         return 1;
     }
 
-    if (check_for_straight(board_arr, board_size) ||
-        check_for_diag(board_arr, board_size))
+    if (is_line_loss(board_arr, board_size) ||
+        is_diag_loss(board_arr, board_size))
     {
         *p_winner = 2 - (move % 2);
         return 1;
@@ -148,53 +165,52 @@ int check_board(int board_arr[N][N], int *p_winner, int board_size, int move)
     return 0;
 }
 
-int valid_product(int product, int count)
+int is_line_loss(int board_arr[N][N], int board_size)
 {
-    if (product == 0 || product == count)
-        return 1;
-    return 0;
-}
-
-int check_for_straight(int board_arr[N][N], int board_size)
-{
-    int rows_prodct = 0, cols_prodct = 0;
-    int row_has_empty, col_has_empty;
+    int col_arr[N];
+    int loss_cnt = 0;
     for (int i = 0; i < board_size; i++)
     {
-        row_has_empty = col_has_empty = 0;
-        rows_prodct = cols_prodct = 0;
         for (int j = 0; j < board_size; j++)
         {
-            cols_prodct += board_arr[j][i] % 2;
-            col_has_empty += board_arr[j][i] == 0;
-            rows_prodct += board_arr[i][j] % 2;
-            row_has_empty += board_arr[i][j] == 0;
+            col_arr[j] = board_arr[j][i];
         }
-        if ((!col_has_empty && (cols_prodct == 0 || cols_prodct == board_size)) ||
-            (!row_has_empty && (rows_prodct == 0 || rows_prodct == board_size)))
-            return 1;
+
+        loss_cnt += is_loss(col_arr, board_size) ||
+                    is_loss(board_arr[i], board_size);
     }
-    return 0;
+
+    return loss_cnt;
 }
 
-int check_for_diag(int board_arr[N][N], int board_size)
+int is_diag_loss(int board_arr[N][N], int board_size)
 {
-    int top_product = 0, bottom_product = 0;
-    int top_has_empty = 0, bottom_has_empty = 0;
+    int diag_arr_ltr[N], diag_arr_rtl[N];
+
     for (int i = 0; i < board_size; i++)
     {
-        top_has_empty += board_arr[i][i] == 0;
-        top_product += board_arr[i][i] % 2;
-        bottom_has_empty += board_arr[board_size - i - 1][i] == 0;
-        bottom_product += board_arr[board_size - i - 1][i] % 2;
+        diag_arr_ltr[i] = board_arr[i][i];
+        diag_arr_rtl[i] = board_arr[board_size - i - 1][i];
     }
 
-    return (!top_has_empty && (top_product == 0 || top_product == board_size)) ||
-           (!bottom_has_empty && (bottom_product == 0 || bottom_product == board_size));
+    return is_loss(diag_arr_ltr, board_size) ||
+           is_loss(diag_arr_rtl, board_size);
 }
 
-int check_for_loss(int arr[N], int size)
+int is_loss(int arr[], int size)
 {
+    int odd_count = 0;
+
+    // count all occurences of odd numbers, if a square is empty (0) - stop
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] == 0)
+            return 0;
+        odd_count += arr[i] % 2;
+    }
+
+    // when all of the numbers are either odd or even, it's a loss.
+    return (odd_count == size || odd_count == 0);
 }
 
 void conclude_game(int winner)
