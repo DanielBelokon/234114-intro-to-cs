@@ -1,0 +1,748 @@
+*** Welcome to AVOIDANCE TIC-TAC-TOE game ***
+
+Please enter board size (1 to 11):
+
+Current board:
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|_|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|_|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|_|_|_|_|_|O|
+|_|_|_|_|_|_|_|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|_|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|_|_|_|_|_|O|
+|_|_|_|_|_|_|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|_|_|_|_|O|X|
+|_|_|_|_|_|_|_|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|_|_|_|_|_|O|
+|_|_|_|_|_|_|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|_|_|_|_|O|X|
+|_|_|_|_|_|_|_|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|X|_|_|_|_|O|
+|_|_|_|_|_|_|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|_|_|_|_|O|X|
+|_|_|_|_|_|_|_|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|_|_|_|_|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|_|_|_|_|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|_|_|_|_|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|_|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|_|_|_|_|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|_|_|_|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|_|_|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|_|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|_|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|X|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|X|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|X|_|_|X|_|O|
+|_|X|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|X|_|_|X|_|O|
+|_|X|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|O|_|_|_|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|X|_|_|X|_|O|
+|_|X|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|O|_|X|_|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|O|X|_|_|X|_|O|
+|_|X|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|O|_|X|_|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|X|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|O|_|X|
+|_|_|_|_|X|_|O|
+|_|X|_|_|_|_|X|
+|_|X|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|_|_|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|_|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|O|_|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|X|O|
+|_|_|_|_|_|_|X|
+|_|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|O|_|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|X|O|
+|_|_|_|_|_|_|X|
+|O|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|O|_|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|X|O|
+|_|_|_|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|_|O|_|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|_|_|_|X|X|O|
+|_|_|_|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|O|O|_|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|X|_|_|X|X|O|
+|_|_|_|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|_|_|_|_|O|
+|_|O|O|O|_|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|_|X|
+|_|X|_|_|X|X|O|
+|_|_|_|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|O|_|_|_|O|
+|_|O|O|O|_|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|X|X|
+|_|X|_|_|X|X|O|
+|_|_|_|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|O|_|_|_|O|
+|_|O|O|O|_|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|X|X|
+|O|X|_|_|X|X|O|
+|_|_|_|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|O|_|_|_|O|
+|_|O|O|O|_|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|X|X|
+|O|X|_|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|O|_|_|_|O|
+|_|O|O|O|_|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|_|_|_|_|X|X|
+|O|X|_|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|O|_|_|O|O|
+|_|O|O|O|_|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|_|X|X|
+|O|X|_|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|O|_|_|O|O|
+|_|O|O|O|_|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|_|X|X|
+|O|X|_|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|O|_|_|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|_|X|X|
+|O|X|_|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|_|O|
+|O|X|O|_|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+Illegal move!!!, please try again:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|_|X|X|
+|O|X|_|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|O|O|
+|O|X|O|_|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|_|X|X|
+|O|X|X|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|O|O|
+|O|X|O|_|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|_|X|X|
+|O|X|X|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|O|O|
+|O|X|O|O|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|X|X|X|
+|O|X|X|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|_|O|O|
+|O|X|O|O|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|X|X|X|
+|O|X|X|_|X|X|O|
+|_|_|X|_|_|X|X|
+|O|_|_|_|O|O|O|
+|O|X|O|O|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|_|O|X|O|X|O|X|
+|_|X|_|_|X|X|X|
+|O|X|X|_|X|X|O|
+|_|_|X|_|X|X|X|
+|O|_|_|_|O|O|O|
+|O|X|O|O|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|_|_|X|X|X|
+|O|X|X|_|X|X|O|
+|_|_|X|_|X|X|X|
+|O|_|_|_|O|O|O|
+|O|X|O|O|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+Illegal move!!!, please try again:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|X|_|X|X|X|
+|O|X|X|_|X|X|O|
+|_|_|X|_|X|X|X|
+|O|_|_|_|O|O|O|
+|O|X|O|O|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|X|_|X|X|X|
+|O|X|X|O|X|X|O|
+|_|_|X|_|X|X|X|
+|O|_|_|_|O|O|O|
+|O|X|O|O|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|X|_|X|X|X|
+|O|X|X|O|X|X|O|
+|_|X|X|_|X|X|X|
+|O|_|_|_|O|O|O|
+|O|X|O|O|X|O|O|
+|_|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|X|_|X|X|X|
+|O|X|X|O|X|X|O|
+|_|X|X|_|X|X|X|
+|O|_|_|_|O|O|O|
+|O|X|O|O|X|O|O|
+|O|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|X|_|X|X|X|
+|O|X|X|O|X|X|O|
+|_|X|X|_|X|X|X|
+|O|_|X|_|O|O|O|
+|O|X|O|O|X|O|O|
+|O|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|X|_|X|X|X|
+|O|X|X|O|X|X|O|
+|_|X|X|_|X|X|X|
+|O|O|X|_|O|O|O|
+|O|X|O|O|X|O|O|
+|O|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|X|_|X|X|X|
+|O|X|X|O|X|X|O|
+|_|X|X|_|X|X|X|
+|O|O|X|X|O|O|O|
+|O|X|O|O|X|O|O|
+|O|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|_|X|X|O|X|X|X|
+|O|X|X|O|X|X|O|
+|_|X|X|_|X|X|X|
+|O|O|X|X|O|O|O|
+|O|X|O|O|X|O|O|
+|O|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|X|X|X|O|X|X|X|
+|O|X|X|O|X|X|O|
+|_|X|X|_|X|X|X|
+|O|O|X|X|O|O|O|
+|O|X|O|O|X|O|O|
+|O|O|O|O|O|X|X|
+
+
+Player ** 2 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|X|X|X|O|X|X|X|
+|O|X|X|O|X|X|O|
+|_|X|X|O|X|X|X|
+|O|O|X|X|O|O|O|
+|O|X|O|O|X|O|O|
+|O|O|O|O|O|X|X|
+
+
+Player ** 1 **, enter next move:
+
+Current board:
+|O|O|X|O|X|O|X|
+|X|X|X|O|X|X|X|
+|O|X|X|O|X|X|O|
+|X|X|X|O|X|X|X|
+|O|O|X|X|O|O|O|
+|O|X|O|O|X|O|O|
+|O|O|O|O|O|X|X|
+
+It's a tie!
