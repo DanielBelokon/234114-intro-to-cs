@@ -21,7 +21,9 @@ int make_move(int board_arr[N][N], int board_size, int *p_move, int coords[2]);
 int play_game(int board_arr[][N], int board_size);
 int get_size();
 
-void get_move(int board_arr[N][N], int board_size, int player, int coords[2]);
+int in_range(int coords[], int range);
+
+void get_move(int board_arr[N][N], int board_size, int coords[2], int move);
 void conclude_game(int winner);
 
 int is_line_loss(int board_arr[N][N], int board_size);
@@ -96,37 +98,43 @@ int play_game(int board_arr[][N], int board_size)
             return winner;
             
         print_player_turn(player);
-        get_move(board_arr, board_size, player, coords);
+        get_move(board_arr, board_size, coords, move);
         make_move(board_arr, board_size, &move, coords);
     }
     return 0;
 }
 
 // get the next move from the cur player
-// 13 lines
-void get_move(int board_arr[N][N], int board_size, int player, int coords[2])
+// 12 lines
+void get_move(int board_arr[N][N], int board_size, int coords[2], int move)
 {
     while (1)
     {
-        if (scanf(" %d", &coords[X]) == 1)
+        if (scanf(" %d", &coords[X]) != 1)
+            continue;
+        if (coords[X] >= 0)
         {
-            if (coords[X] > 0)
-            {
-                if (scanf(" %d", &coords[Y]) == 1 &&
-                    coords[Y] > 0 &&
-                    coords[Y] <= board_size &&
-                    coords[X] <= board_size &&
-                    board_arr[coords[X] - 1][coords[Y] - 1] == 0)
-                    break;
-            }
-            else if (coords[X] % 2 == -1)
-                break;
+            // validate input and empty square
+            if (scanf(" %d", &coords[Y]) == 1 &&
+                in_range(coords, board_size) &&
+                board_arr[coords[X] - 1][coords[Y] - 1] == 0)
+                return;
         }
+        // undo moves
+        else if (coords[X] % 2 == -1 && move > -coords[X])
+            return;
 
+        // not a valid move
         print_error();
     }
 
     return;
+}
+
+int in_range(int coords[], int range)
+{
+    return (coords[X] > 0 && coords[X] <= range &&
+            coords[Y] > 0 && coords[Y] <= range);
 }
 
 // apply the current move to the board and update the move counter accordingly
@@ -164,12 +172,6 @@ void undo(int board_arr[N][N], int board_size, int *p_move, int undo_by)
 // 8 lines
 int check_board(int board_arr[N][N], int *p_winner, int board_size, int move)
 {
-    // no more space == no winner
-    if ((move - 1) == board_size * board_size)
-    {
-        *p_winner = 0;
-        return 1;
-    }
 
     if (is_line_loss(board_arr, board_size) ||
         is_diag_loss(board_arr, board_size))
@@ -179,6 +181,12 @@ int check_board(int board_arr[N][N], int *p_winner, int board_size, int move)
         return 1;
     }
 
+    // no more space == no winner
+    if ((move - 1) == board_size * board_size)
+    {
+        *p_winner = 0;
+        return 1;
+    }
     return 0;
 }
 
