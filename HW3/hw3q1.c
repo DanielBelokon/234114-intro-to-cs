@@ -42,7 +42,7 @@ void print_tie();
 /*-------------------------------------------------------------------------
     Implementation
     Avoidance tic tac toe - play until someone loses by placing n moves in a 
-    straight or diagnal line
+    straight or diagonal line
 
     X := odd numbers in the board arr
     O := even numbers in the board arr
@@ -210,7 +210,7 @@ int is_line_loss(int board_arr[N][N], int board_size)
     return loss_cnt;
 }
 
-// Check both diagnals for full X or O (odd vs even)
+// Check both diagonals for full X or O (odd vs even)
 int is_diag_loss(int board_arr[N][N], int board_size)
 {
     int diag_arr_ltr[N], diag_arr_rtl[N];
