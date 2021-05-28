@@ -86,13 +86,13 @@ int play_game(int board_arr[][N], int board_size)
     int coords[2] = {0}, winner = 0;
     int move = 1, player = 0;
 
-    // play as long as board isn't full (save one to print the final board)
+    // play as long as there is space
     while (move - 1 <= board_size * board_size)
     {
         player = 2 - (move % 2);
         print_board(board_arr, board_size);
 
-        // when enough moves for a loss, check
+        // when enough moves for a loss (n moves each player), check for loss
         if (move >= 2 * board_size &&
             check_board(board_arr, &winner, board_size, move))
             return winner;
@@ -144,10 +144,7 @@ int make_move(int board_arr[][N], int board_size, int *p_move, int coords[])
     if (coords[X] < 0)
         undo(board_arr, board_size, p_move, coords[X]);
     else
-    {
-        board_arr[coords[X] - 1][coords[Y] - 1] = *p_move;
-        (*p_move)++;
-    }
+        board_arr[coords[X] - 1][coords[Y] - 1] = (*p_move)++;
     return 0;
 }
 
@@ -187,6 +184,7 @@ int check_board(int board_arr[N][N], int *p_winner, int board_size, int move)
         *p_winner = 0;
         return 1;
     }
+    // No winner yet
     return 0;
 }
 
