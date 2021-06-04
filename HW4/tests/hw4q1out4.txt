@@ -1,0 +1,13 @@
+Enter image dimensions:
+Enter image:
+Enter sliding window dimensions:
+Integral image is:
+1 3 6 10 22
+6 14 24 36 65
+15 33 54 78 135
+28 60 96 136 226
+Smoothed image is:
+2 3 3 6 5
+4 6 7 11 9
+6 10 11 16 13
+5 8 9 13 10
