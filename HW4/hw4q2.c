@@ -3,6 +3,7 @@
 --------------------------------------------------------------------------*/
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define KEY_SIZE 52
@@ -58,4 +59,61 @@ int main()
     print_words(words, num_words);
     release_memory(words, num_words);
     return 0;
+}
+
+char encrypt(unsigned char key[KEY_SIZE], char ch)
+{
+    if (ch <= 'z' && ch >= 'a')
+        return key[ch - 'a' + 26];
+    else if (ch >= 'A' && ch <= 'Z')
+        return key[ch - 'A'];
+
+    return -1;
+}
+
+int read_words(char *words[], int size, int max_str_len)
+{
+    char ch = 0;
+    char *temp_word = malloc(max_str_len);
+    int word_index = 0, ch_index;
+    while (word_index < size && ch != EOF)
+    {
+        ch_index = 0;
+
+        // While word, read - append null terminator
+        while ((ch = getchar()) != ' ' && ch_index < max_str_len - 1 && ch != EOF)
+            temp_word[ch_index++] = ch;
+        temp_word[ch_index] = '\0';
+
+        // Get some space
+        words[word_index] = (char *)malloc(ch_index + 1);
+        if (words[word_index] == NULL)
+            return -1;
+
+        // move word to the provided arr
+        strcpy(words[word_index++], temp_word);
+    }
+
+    return word_index;
+}
+
+void encrypt_words(char *words[], int num_words, unsigned char key[KEY_SIZE])
+{
+    for (int cur_word = 0; cur_word < num_words; cur_word++)
+    {
+        int i = 0;
+        while (words[cur_word][i])
+        {
+            words[cur_word][i] = encrypt(key, words[cur_word][i]);
+            i++;
+        }
+    }
+}
+
+void release_memory(char *words[], int num_words)
+{
+    for (int i = 0; i < num_words; i++)
+    {
+        free(words[i]);
+    }
 }
