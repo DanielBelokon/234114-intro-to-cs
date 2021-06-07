@@ -2,6 +2,8 @@
 /*=========================================================================
   Constants and definitions:
 ==========================================================================*/
+#include <stdio.h>
+#include <math.h>
 
 #define N 50
 #define M 50
@@ -63,7 +65,7 @@ void compute_integral_image(int image[][M], int n, int m, int integral_image[][M
                 above = integral_image[row - 1][col];
             if (col > 0)
                 left = integral_image[row][col - 1];
-            if (col == 0 && row == 0)
+            if (col > 0 && row > 0)
                 remove = integral_image[row - 1][col - 1];
 
             integral_image[row][col] = image[row][col] + above + left - remove;
@@ -76,13 +78,13 @@ int sum_rect(int integral_image[][M], int rect[4])
     sum += integral_image[rect[2]][rect[3]];
 
     if (rect[0] > 0)
-        sum += integral_image[rect[0] - 1][rect[3]];
+        sum -= integral_image[rect[0] - 1][rect[3]];
 
     if (rect[1] > 0)
-        sum += integral_image[rect[2]][rect[1] - 1];
+        sum -= integral_image[rect[2]][rect[1] - 1];
 
     if (rect[1] > 0 && rect[0] > 0)
-        sum -= integral_image[rect[0] - 1][rect[1] - 1];
+        sum += integral_image[rect[0] - 1][rect[1] - 1];
 
     return sum;
 }
@@ -94,7 +96,12 @@ void sliding_average(int integral_image[][M], int n, int m, int h, int w, int av
     {
         for (int col = 0; col < m; col++)
         {
-            /* code */
+            rect[0] = row - h / 2;
+            rect[1] = col - w / 2;
+
+            rect[2] = row + (row < n - 1) * (h / 2);
+            rect[3] = col + (col < m - 1) * (w / 2);
+            average[row][col] = round(sum_rect(integral_image, rect) / (double)(h * w));
         }
     }
 }
