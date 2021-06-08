@@ -75,6 +75,9 @@ int read_words(char *words[], int size, int max_str_len)
 {
     char ch = 0;
     char *temp_word = malloc(max_str_len);
+    if (temp_word == NULL)
+        return -1;
+
     int word_index = 0, ch_index;
     while (word_index < size && ch != EOF)
     {
@@ -88,11 +91,16 @@ int read_words(char *words[], int size, int max_str_len)
         // Get some space
         words[word_index] = (char *)malloc(ch_index + 1);
         if (words[word_index] == NULL)
-            return -1;
+        {
+            word_index = -1;
+            break;
+        }
 
         // move word to the provided arr
         strcpy(words[word_index++], temp_word);
     }
+
+    free(temp_word);
 
     return word_index;
 }
