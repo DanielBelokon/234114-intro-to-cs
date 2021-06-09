@@ -20,7 +20,7 @@ int main()
         printf("The answer to question 4 is a\n");
         break;
     case 5 :
-        printf("The answer to question 5 is l\n");
+        printf("The answer to question 5 is k\n");
         break;
     case 6 :
         printf("The answer to question 6 is g\n");
