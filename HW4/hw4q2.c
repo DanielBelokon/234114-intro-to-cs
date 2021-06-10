@@ -92,6 +92,7 @@ int read_words(char *words[], int size, int max_str_len)
         words[word_index] = (char *)malloc(ch_index + 1);
         if (words[word_index] == NULL)
         {
+            release_memory(words, word_index - 1);
             word_index = -1;
             break;
         }
