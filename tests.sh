@@ -2,6 +2,10 @@
 
 
 :' INSTRUCTIONS -
+	A small script to automaticall run tests
+	Extremly specific, so probably not usable for other courses
+	Enter HW number, Question number, and the amount of tests and off you go 
+
 	Run in bash, follow the instructions 
 	OR
 	enter -w -q -r flags through commandline
@@ -14,7 +18,7 @@
 		test input name: 	hw#q#in#.txt
 		test output name:	hw#q#out#.txt
 	
-	# <=> Homework/Question/Test number (in & out # must match)
+	# := Homework/Question/Test number (in & out # must match)
 
 	Example: 
 
