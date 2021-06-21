@@ -1,5 +1,33 @@
 #!/bin/bash
 
+
+:' INSTRUCTIONS -
+	Run in bash, follow the instructions 
+	OR
+	enter -w -q -r flags through commandline
+	
+	Default (and only, because lazy) accepted dir structure
+
+	Store binarys in: 	./HW#/bin/
+	Store tests in: 	./HW#/tests
+
+		test input name: 	hw#q#in#.txt
+		test output name:	hw#q#out#.txt
+	
+	# <=> Homework/Question/Test number (in & out # must match)
+
+	Example: 
+
+	./tests.sh
+		/HW#
+			/bin
+				hw2q1.exe
+			/tests
+				hw2q1in1.txt
+				hw2q1out1.txt
+
+'
+
 while true
 do
 while getopts w:q:n:r: flag
