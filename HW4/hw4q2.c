@@ -74,7 +74,7 @@ char encrypt(unsigned char key[KEY_SIZE], char ch)
 int read_words(char *words[], int size, int max_str_len)
 {
     char ch = 0;
-    char *temp_word = malloc(max_str_len);
+    char *temp_word = malloc(max_str_len + 1);
     if (temp_word == NULL)
         return -1;
 
@@ -84,7 +84,7 @@ int read_words(char *words[], int size, int max_str_len)
         ch_index = 0;
 
         // While word, read - append null terminator
-        while ((ch = getchar()) != ' ' && ch_index < max_str_len - 1 && ch != EOF)
+        while ((ch = getchar()) != ' ' && ch_index < max_str_len && ch != EOF)
             temp_word[ch_index++] = ch;
         temp_word[ch_index] = '\0';
 
