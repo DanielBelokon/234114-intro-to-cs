@@ -98,9 +98,17 @@ void sliding_average(int integral_image[][M], int n, int m, int h, int w, int av
         {
             rect[0] = row - h / 2;
             rect[1] = col - w / 2;
-
-            rect[2] = row + (row < n - (h / 2)) * (h / 2);
-            rect[3] = col + (col < m - (w / 2)) * (w / 2);
+            
+            if ((row < n - (h / 2)))
+                rect[2] = row + (h / 2);
+            else
+                rect[2] = n-1;
+                
+            if ((col < m - (w / 2)))
+                rect[3] = col + (w / 2);
+            else
+                rect[3] = m-1;
+                
             average[row][col] = round(sum_rect(integral_image, rect) / (double)(h * w));
         }
     }
