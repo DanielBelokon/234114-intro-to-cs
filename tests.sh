@@ -1,36 +1,35 @@
 #!/bin/bash
 
 
-:' INSTRUCTIONS -
-	A small script to automaticall run tests
-	Extremly specific, so probably not usable for other courses
-	Enter HW number, Question number, and the amount of tests and off you go 
+# INSTRUCTIONS -
+#	A small script to automaticall run tests
+#	Extremly specific, so probably not usable for other courses
+#	Enter HW number, Question number, and the amount of tests and off you go 
 
-	Run in bash, follow the instructions 
-	OR
-	enter -w -q -r flags through commandline
-	
-	Default (and only, because lazy) accepted dir structure
-
-	Store binarys in: 	./HW#/bin/
-	Store tests in: 	./HW#/tests
-
-		test input name: 	hw#q#in#.txt
-		test output name:	hw#q#out#.txt
-	
+#	Run in bash, follow the instructions 
+#	OR
+#	enter -w -q -r flags through commandline
+#	
+#	Default (and only, because lazy) accepted dir structure
+#
+#	Store binarys in: 	./HW#/bin/
+#	Store tests in: 	./HW#/tests
+#
+#		test input name: 	hw#q#in#.txt
+#		test output name:	hw#q#out#.txt
+#	
 	# := Homework/Question/Test number (in & out # must match)
 
-	Example: 
+#	Example: 
 
-	./tests.sh
-		/HW#
-			/bin
-				hw2q1.exe
-			/tests
-				hw2q1in1.txt
-				hw2q1out1.txt
+#	./tests.sh
+#		/HW#
+#			/bin
+#				hw2q1.exe
+#			/tests
+#				hw2q1in1.txt
+#				hw2q1out1.txt
 
-'
 
 while true
 do
