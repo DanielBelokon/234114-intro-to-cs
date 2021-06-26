@@ -5,8 +5,8 @@
 
 void find_shortest(int map[][N], int source, int dest, int shortest_path[]);
 void print_shortest_path(int *sol, int n);
-int step_shortest(int map[][N], int cur_city, int dest, int scorched[],
-                  int cur_len, int cur_path[], int index, int shortest_path[]);
+void step_shortest(int map[][N], int cur_city, int dest, int scorched[],
+                   int cur_len, int cur_path[], int index, int shortest_path[]);
 
 void arrcpy(int dest[], int source[], int size);
 int read_map(int map[][N]);
@@ -43,15 +43,15 @@ void find_shortest(int map[][N], int source, int dest, int shortest_path[])
     step_shortest(map, source, dest, scorched, 0, cur_path, 1, shortest_path);
 }
 
-int step_shortest(int map[][N], int cur_city, int dest, int scorched[],
-                  int cur_len, int cur_path[], int index, int shortest_path[])
+void step_shortest(int map[][N], int cur_city, int dest, int scorched[],
+                   int cur_len, int cur_path[], int index, int shortest_path[])
 {
     if (cur_city == dest)
     {
+        shortest_path[N] = index;
         shortest_path[N + 1] = cur_len;
         arrcpy(shortest_path, cur_path, N);
-        shortest_path[N] = index;
-        return index;
+        return;
     }
 
     for (int city = 0; city < N; city++)
@@ -68,7 +68,7 @@ int step_shortest(int map[][N], int cur_city, int dest, int scorched[],
         }
         scorched[city] = 0;
     }
-    return index;
+    return;
 }
 
 int read_map(int map[][N])
