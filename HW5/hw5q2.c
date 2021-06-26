@@ -59,12 +59,12 @@ void step_shortest(int map[][N], int cur_city, int dest, int scorched[],
         if (scorched[city] || index >= N)
             continue;
 
-        int cur_road = map[cur_city][city];
+        int new_len = map[cur_city][city] + cur_len;
         scorched[city] = 1;
-        if (cur_road + cur_len < shortest_path[N + 1])
+        if (new_len < shortest_path[N + 1])
         {
             cur_path[index] = city;
-            step_shortest(map, city, dest, scorched, cur_road + cur_len, cur_path, index + 1, shortest_path);
+            step_shortest(map, city, dest, scorched, new_len, cur_path, index + 1, shortest_path);
         }
         scorched[city] = 0;
     }
