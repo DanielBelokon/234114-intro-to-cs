@@ -1,0 +1,4 @@
+Please enter length:
+Please enter array:
+Please enter sum:
+Such elements do not exist.

@@ -1,0 +1,4 @@
+Please enter length:
+Please enter array:
+The second-greatest is:
+2
