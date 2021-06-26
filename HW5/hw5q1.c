@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 
 int find_largest(int nums_left, int cur_largest, int second_largest);
 
@@ -10,7 +11,7 @@ int main()
     if (scanf("%d", &iterations) > 0)
     {
         printf("Please enter array:\n");
-        second_largest = find_largest(iterations, 0, 0);
+        second_largest = find_largest(iterations, INT_MIN, INT_MIN);
         printf("The second-greatest is:\n%d", second_largest);
     }
 }
