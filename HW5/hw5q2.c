@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include <limits.h>
 
 #define N 4
@@ -8,11 +7,14 @@ void find_shortest(int map[][N], int source, int dest, int shortest_path[]);
 void print_shortest_path(int *sol, int n);
 int step_shortest(int map[][N], int cur_city, int dest, int scorched[],
                   int cur_len, int cur_path[], int index, int shortest_path[]);
+
+void arrcpy(int dest[], int source[], int size);
 int read_map(int map[][N]);
 
 int main()
 {
     int map[N][N] = {{0}};
+    int shortest_path[N + 2];
     int source, dest;
 
     printf("Please enter roads matrix:\n");
@@ -27,7 +29,6 @@ int main()
     if (scanf("%d", &dest) != 1)
         return -1;
 
-    int shortest_path[N + 2];
     find_shortest(map, source, dest, shortest_path);
     print_shortest_path(shortest_path, shortest_path[N]);
 }
@@ -42,22 +43,13 @@ void find_shortest(int map[][N], int source, int dest, int shortest_path[])
     step_shortest(map, source, dest, scorched, 0, cur_path, 1, shortest_path);
 }
 
-void print_shortest_path(int *sol, int n)
-{
-    printf("The shortest path is:\n");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", sol[i]);
-    }
-}
-
 int step_shortest(int map[][N], int cur_city, int dest, int scorched[],
                   int cur_len, int cur_path[], int index, int shortest_path[])
 {
     if (cur_city == dest)
     {
         shortest_path[N + 1] = cur_len;
-        memcpy(shortest_path, cur_path, N * sizeof(int));
+        arrcpy(shortest_path, cur_path, N);
         shortest_path[N] = index;
         return index;
     }
@@ -91,4 +83,21 @@ int read_map(int map[][N])
     }
 
     return 0;
+}
+
+void arrcpy(int dest[], int source[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        dest[i] = source[i];
+    }
+}
+
+void print_shortest_path(int *sol, int n)
+{
+    printf("The shortest path is:\n");
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", sol[i]);
+    }
 }
