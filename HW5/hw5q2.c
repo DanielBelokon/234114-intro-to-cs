@@ -50,7 +50,7 @@ void step_shortest(int map[][N], int cur_city, int dest, int scorched[],
     {
         shortest_path[N] = index;
         shortest_path[N + 1] = cur_len;
-        arrcpy(shortest_path, cur_path, N);
+        arrcpy(shortest_path, cur_path, index);
         return;
     }
 
