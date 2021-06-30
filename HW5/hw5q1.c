@@ -14,6 +14,8 @@ int main()
         second_largest = find_largest(iterations, INT_MIN, INT_MIN);
         printf("The second-greatest is:\n%d", second_largest);
     }
+
+    return 0;
 }
 
 int find_largest(int nums_left, int cur_largest, int second_largest)
@@ -27,11 +29,10 @@ int find_largest(int nums_left, int cur_largest, int second_largest)
     {
         if (num > cur_largest)
         {
-            second_largest = cur_largest;
-            cur_largest = num;
+            return find_largest(--nums_left, num, cur_largest);
         }
         else if (num > second_largest)
-            second_largest = num;
+            return find_largest(--nums_left, cur_largest, num);
     }
 
     return find_largest(--nums_left, cur_largest, second_largest);
