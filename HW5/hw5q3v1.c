@@ -6,6 +6,7 @@ int *read_arr(int size);
 int find_sum(int *arr, int size, int sum);
 int sum_exists(int *arr, int size, int sum, int *used, int index);
 
+// find by recursion - O(n^3)
 int main()
 {
     int size, sum;
