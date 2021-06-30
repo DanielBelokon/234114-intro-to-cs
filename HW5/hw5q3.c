@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int *read_arr(int size);
-int find_sorted_sum(int *arr, int size, int sum);
+int tri_sum_exists(int *arr, int size, int sum);
 int find_sum(int *arr, int size, int sum);
 void q_sort(int *arr, int size);
 int sum_exists(int *arr, int size, int sum, int *used, int index);
@@ -13,6 +13,7 @@ int main()
     int size, sum;
     int *arr;
 
+    // Get input, exit if invalid or no mem left
     printf("Please enter length:\n");
     if (scanf("%d", &size) != 1)
         return 1;
@@ -25,15 +26,11 @@ int main()
     if (scanf("%d", &sum) != 1)
         return 1;
 
+    // Sort for faster searching
     q_sort(arr, size - 1);
 
-    // for (int i = 0; i < size; i++)
-    // {
-    //     printf("%d ", arr[i]);
-    // }
 
-    int exists = find_sorted_sum(arr, size, sum);
-    if (!exists)
+    if (!tri_sum_exists(arr, size, sum))
         printf("Such elements do not exist.");
     else
         printf("Such elements do exist.");
@@ -60,7 +57,12 @@ int *read_arr(int size)
     return arr;
 }
 
-int find_sorted_sum(int *arr, int size, int sum)
+/* Find the sum of 3 using quick-sort style indexing:
+* Use each element as pivot one at a time, determin with two indices (top and bottom) if
+* three numbers make up a sum by decreasing or increasing it accordingly,
+* if not - continue to next pivot, O(n^2) worst case
+*/
+int tri_sum_exists(int *arr, int size, int sum)
 {
     for (int i = 0; i < size; i++)
     {
@@ -71,10 +73,13 @@ int find_sorted_sum(int *arr, int size, int sum)
 
         while (bottom < top)
         {
-            calced_sum = arr[bottom] + arr[i] + arr[top];
+            calced_sum = arr[i] + arr[bottom] + arr[top];
+
+            // Found solution
             if (calced_sum == sum)
                 return 1;
 
+            // Decrease or increase the sum accordingly (array is sorted)
             if (calced_sum < sum)
                 bottom++;
             else
@@ -82,41 +87,7 @@ int find_sorted_sum(int *arr, int size, int sum)
         }
     }
 
-    return 0;
-}
-
-int find_sum(int *arr, int size, int sum)
-{
-    int *used = (int *)malloc(size * sizeof(int));
-    if (used == NULL)
-        return -1;
-
-    for (int i = 0; i < size; i++)
-        used[i] = 0;
-
-    int exists = sum_exists(arr, size, sum, used, 0);
-    free(used);
-    return exists;
-}
-
-int sum_exists(int *arr, int size, int sum, int *used, int index)
-{
-    if (sum == 0 && index == 3)
-        return 1;
-    if (index >= 3)
-        return 0;
-
-    for (int i = 0; i < size; i++)
-    {
-        if (used[i])
-            continue;
-
-        used[i] = 1;
-        if (sum_exists(arr, size, sum - arr[i], used, index + 1))
-            return 1;
-        used[i] = 0;
-    }
-
+    // No solution was found
     return 0;
 }
 
