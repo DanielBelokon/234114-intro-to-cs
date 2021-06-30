@@ -23,8 +23,6 @@ int main()
     if (scanf("%d", &sum) != 1)
         return 1;
 
-    q_sort(arr, size - 1);
-
     // for (int i = 0; i < size; i++)
     // {
     //     printf("%d ", arr[i]);
