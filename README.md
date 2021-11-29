@@ -1,3 +1,3 @@
-# Assignments from the "234144 Intro To CS" Course
+# Assignments from the "234114 Intro To CS" Course
 
-Assignments in C (adhearing to c99) for the Technion course 234144. 
+Assignments in C (adhearing to c99) for the Technion course 234114. 
